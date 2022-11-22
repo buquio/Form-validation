@@ -1,0 +1,145 @@
+Form Data Validation
+Data validation is the process of ensuring that user input is clean, correct, and useful.
+
+Typical validation tasks are:
+has the user filled in all required fields?
+has the user entered a valid date?
+has the user entered text in a numeric field?
+Most often, the purpose of data validation is to ensure correct user input.
+
+Validation can be defined by many different methods, and deployed in many different ways.
+
+1.Server side validation is performed by a web server, after input has been sent to the server.
+
+2.Client side validation is performed by a web browser, before input is sent to a web server.
+
+3.HTML Constraint Validation
+HTML5 introduced a new HTML validation concept called constraint validation.
+
+HTML constraint validation is based on:
+-a. Constraint validation HTML Input Attributes
+-b. Constraint validation CSS Pseudo Selectors
+-c./d. Constraint validation DOM Properties and Methods
+
+
+a. Constraint Validation HTML Input Attributes
+Attribute	    /Description
+disabled	   -Specifies that the input element should be disabled
+max	         -Specifies the maximum value of an input element
+min	         -Specifies the minimum value of an input element
+pattern	     -Specifies the value pattern of an input element
+required	   -Specifies that the input field requires an element
+type 	       -Specifies the type of an input element
+For a full list, go to HTML Input Attributes.
+
+b. Constraint Validation CSS Pseudo Selectors
+Selector	Description
+:disabled	Selects input elements with the "disabled" attribute specified
+:invalid	Selects input elements with invalid values
+:optional	Selects input elements with no "required" attribute specified
+:required	Selects input elements with the "required" attribute specified
+:valid	    Selects input elements with valid values
+For a full list, go to CSS Pseudo Classes.
+
+
+
+xxxxxx
+c. JavaScript Validation API
+d. Constraint Validation DOM Methods
+
+Property	/Description
+checkValidity()	      Returns true if an input element contains valid data.
+setCustomValidity()	  Sets the validationMessage property of an input element.
+
+If an input field contains invalid data, display a message:
+The checkValidity() Method
+<input id="id1" type="number" min="100" max="300" required>
+<button onclick="myFunction()">OK</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var inpObj = document.getElementById("id1");
+  if (!inpObj.checkValidity()) {
+    document.getElementById("demo").innerHTML = inpObj.validationMessage;
+  }
+}
+</script>
+
+
+d. Constraint Validation DOM Properties
+Property	/Description
+validity	        Contains boolean properties related to the validity of an input element.
+validationMessage	Contains the message a browser will display when the validity is false.
+willValidate	    Indicates if an input element will be validated.
+
+Validity Properties
+The validity property of an input element contains a number of properties related to the validity of data:
+
+Property	/Description
+customError	    Set to true, if a custom validity message is set.
+patternMismatch	Set to true, if an element's value does not match its pattern attribute.
+rangeOverflow	Set to true, if an element's value is greater than its max attribute.
+rangeUnderflow	Set to true, if an element's value is less than its min attribute.
+stepMismatch	Set to true, if an element's value is invalid per its step attribute.
+tooLong	        Set to true, if an element's value exceeds its maxLength attribute.
+typeMismatch	Set to true, if an element's value is invalid per its type attribute.
+valueMissing	Set to true, if an element (with a required attribute) has no value.
+valid	        Set to true, if an element's value is valid.
+
+
+Examples
+If the number in an input field is greater than 100 (the input's max attribute), display a message:
+
+The rangeOverflow Property
+<input id="id1" type="number" max="100">
+<button onclick="myFunction()">OK</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var txt = "";
+  if (document.getElementById("id1").validity.rangeOverflow) {
+    txt = "Value too large";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+xxxxxx
+If the number in an input field is less than 100 (the input's min attribute), display a message:
+
+The rangeUnderflow Property
+<input id="id1" type="number" min="100">
+<button onclick="myFunction()">OK</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var txt = "";
+  if (document.getElementById("id1").validity.rangeUnderflow) {
+    txt = "Value too small";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+</script>
+
+
+xxxxx
+The rangeOverflow Property
+<input id="id1" type="number" max="100">
+<button onclick="myFunction()">OK</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var txt = "";
+  if (document.getElementById("id1").validity.rangeOverflow) {
+    txt = "Value too large";
+  }
+  document.getElementById("demo").innerHTML = txt;
+}

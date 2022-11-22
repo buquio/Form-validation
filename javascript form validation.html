@@ -1,0 +1,105 @@
+
+<html>
+    <head>
+        <meta>
+        <title></title>
+        <link>
+        <script>
+            function validateForm() {
+              var x = document.forms["myForm"]["fname"].value;
+              if (x == "") {
+              alert("Name must be filled out");
+               return false;
+                    }
+                }
+        </script>
+    </head>
+    <body> 
+        <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+           Name: <input type="text" name="fname">
+           <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Can Validate Input</h2>
+
+<p>Please input a number between 1 and 10:</p>
+
+<input id="numb">
+
+<button type="button" onclick="myFunction()">Submit</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x, text;
+
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("numb").value;
+
+  // If x is Not a Number or less than one or greater than 10
+  if (isNaN(x) || x < 1 || x > 10) {
+    text = "Input not valid";
+  } else {
+    text = "Input OK";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+</body>
+</html> 
+
+
+
+XXXX
+<html>
+    <head>
+        <meta>
+        <title></title>
+        <link>
+        <script>
+          const email = document.getElementById("mail");
+
+             email.addEventListener("input", function (event) {
+             if (email.validity.typeMismatch) {
+              email.setCustomValidity("I am expecting an e-mail address!");
+                 } else {
+               email.setCustomValidity("");
+                   }
+                });
+        </script>
+    </head>
+    
+    <body>
+<form>
+  <label for="mail">I would like you to provide me with an e-mail address:</label>
+  <input type="email" id="mail" name="mail">
+  <button>Submit</button>
+</form>
+
+    </body>
+</html>
+
+<!--And add the following JavaScript to the page:-->
+
+<!--
+Here we store a reference to the email input, then add an event listener to it that runs the contained code each time the value inside the input is changed.
+
+Inside the contained code, we check whether the email input's validity.typeMismatch property returns true, meaning that the contained value doesn't match the pattern for a well-formed email address. If so, we call the setCustomValidity() method with a custom message. This renders the input invalid, so that when you try to submit the form, submission fails and the custom error message is displayed.
+
+If the validity.typeMismatch property returns false, we call the setCustomValidity() method an empty string. This renders the input valid, so the form will submit.
+
+You can try it out below:
+
+-->
+
+
